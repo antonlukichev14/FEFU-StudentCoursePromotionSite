@@ -1,0 +1,549 @@
+body 
+{
+    margin: 0;
+    background-color: white;
+    color: white;
+    font-family: 'IgraSans';
+}
+
+#menu
+{
+    position: fixed;
+    top: 6.25vw;
+    right: 6.25vw;
+    width: 25.7vw;
+    height: 3vw;
+    background-color: #064BB3;
+    z-index: 5;
+    border-radius: 2.7vw;
+    transition: transform 0.3s ease;
+}
+
+#menubuttons 
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -0.15vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#menubuttonsdel
+{
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#menubuttonsdel img 
+{
+    height: 2.3vw;
+}
+
+#menubuttons a 
+{
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    font-size: 1.25vw;
+    color: white;
+    text-decoration: none;
+    width: 33%;
+    text-align: center;
+}
+
+#menubuttons a:hover
+{
+    text-decoration: underline;
+}
+
+.hidden {
+    transform: translateY(-10vw);
+}
+
+#header
+{
+    background-color: #668DC2;
+    padding: 2.5vw;
+    min-height: 84vw;
+    width: auto;
+}
+
+#headerimage
+{
+    width: 100%;
+    height: 68vw;
+    mask: url(../images/headermask.svg);
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    background-image: url(../images/headerimage.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#headercontent
+{
+    position: absolute;
+    top: 40vw;
+    left: 3.7vw;
+}
+
+#headertext
+{
+    font-size: 3.1vw;
+    line-height: 3.5vw;
+    width: 35%;
+}
+
+#bluebox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.9vw;
+    width: 69vw;
+    height: 8vw;
+    background-image: url(../images/bluebox.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#blueboxtext
+{
+    font-size: 2.1vw;
+    padding-left: 2.6vw;
+}
+
+#headerthanks 
+{
+    display: flex;
+    font-size: 2.1vw;
+    margin-top: 1.9vw;
+    align-items: center;
+    margin-left: 1.3vw;
+}
+
+#headerthanks img
+{
+    width: 3.1vw;
+    height: auto;
+}
+
+#headerend
+{
+    position: relative;
+    width: 100%;
+    height: 6.25vw;
+    background-color: #2E5CAE;
+    top: -7vw;
+    mask: url(../images/headerbackgroundanim.svg);
+    mask-repeat: repeat;
+    mask-size: cover;
+    animation: 2.2s linear 0s infinite wave;
+    z-index: 3;
+}
+
+#headerendboat
+{
+    position: absolute;
+    width: 6vw;
+    z-index: 2;
+    left: 47vw;
+    top: 81.3vw;
+    animation: 2.2s ease-in-out 0.02s infinite waveboat;
+}
+
+@keyframes wave
+{
+    from
+    {
+        mask-position: 0vw 0;
+    }
+    to 
+    {
+        mask-position: 100vw 0;
+    }
+}
+
+@keyframes waveboat
+{
+    0%
+    {
+        top: 83.7vw;
+    }
+    50% 
+    {
+        top: 81.3vw;
+    }
+    100%
+    {
+        top: 83.7vw;
+    }
+}
+
+@keyframes circleRotate 
+{
+    from
+    {
+        transform: rotate(0deg);
+    }
+    to
+    {
+        transform: rotate(360deg);
+    }
+}
+
+#search 
+{
+    background-color: #2E5CAE;
+    position: relative;
+    z-index: 4;
+    top: -7.1vw;
+    font-size: 3.1vw;
+    margin-bottom: -7.1vw;
+    padding-bottom: 10vw;
+}
+
+#searchtitle
+{
+    padding-top: 13vw;
+    text-align: center;
+}
+
+#searchfieldflexbox
+{
+    margin-top: 2.5vw;
+    display: flex;
+    justify-content: center;    
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchfield 
+{
+    height: 4.7vw;
+    width: 49.6vw;
+    background-color: white;
+    border-radius: 2.4vw;
+    margin-bottom: 1vw;
+}
+
+#searchfieldta
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+
+#searchfieldta textarea
+{
+    color: black;
+    height: 100%;
+    width: 80%;
+    border-style: none;
+    background: none;
+    font-size: 1.9vw;
+    line-height: 1.9vw;
+    padding-top: 0.8vw;
+    margin-left: 2.6vw;
+    resize: none;
+    white-space: nowrap;
+    height: 2.6vw;
+}
+
+#searchfieldta textarea::placeholder
+{
+    font-size: 1.9vw;
+    line-height: 1.9vw;
+    color: #7D7D7D;
+    font-family: 'IgraSans';
+}
+
+#searchfieldta textarea:focus-visible
+{
+    outline: none;
+}
+
+#searchfieldta textarea::-webkit-scrollbar {
+    height: 0.4vw;
+}
+
+#searchfieldta textarea::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* Цвет ползунка */
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+#searchfieldta textarea::-webkit-scrollbar-track {
+    background: none;
+}
+
+#searchfieldta button 
+{
+    height: 3.7vw;
+    width: 3.7vw;
+    background-image: url(../images/filter.png);
+    background-size: contain;
+    border: none;
+    margin-right: 2.6vw;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+
+#searchfieldta button:hover
+{
+    transform: scale(1.1);
+}
+
+.searchfieldhidden
+{
+    position: relative;
+    opacity: 0.0;
+    pointer-events: none;
+    height: 4.7vw;
+    width: 49.6vw;
+    background-color: white;
+    border-radius: 2.4vw;
+    margin-bottom: 1vw;
+    transform: translateY(-5.7vw);
+    margin-bottom: -4.7vw;
+}
+
+.searchfilterfield
+{
+    color: black;
+    font-size: 1.9vw;
+    line-height: 1.9vw;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.searchfilterfieldscroll
+{
+    display: flex;
+    margin-left: 2.6vw;
+    margin-right: 2.6vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 2.6vw;
+    align-items: center;
+    flex-direction: row;
+}
+
+.searchfilterfield a
+{
+    margin-left: 2.6vw;
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+}
+
+.searchfilterfield a:hover
+{
+    text-decoration: underline 0.1vw;
+}
+
+.setfilter
+{
+    text-decoration: underline;
+}
+
+.searchfilterfieldscroll::-webkit-scrollbar
+{
+    height: 0.4vw;
+}
+
+.searchfilterfieldscroll::-webkit-scrollbar-thumb 
+{
+    background-color: #c0c0c0; /* Цвет ползунка */
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+.searchfilterfieldscroll::-webkit-scrollbar-track 
+{
+    background: none;
+}
+
+#searchdecor
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+}
+
+@keyframes waveCircles
+{
+    0%
+    {
+        transform: translateY(1vw);
+    }
+    50% 
+    {
+        transform: translateY(-1vw);
+    }
+    100%
+    {
+        transform: translateY(1vw);
+    }
+}
+
+#courses
+{
+    display: flex;
+    min-height: 333px;
+    align-items: center;
+    flex-direction: column;
+    padding: 3.3vw;
+}
+
+.course
+{
+    background-color: #668DC2;
+    width: 75vw;
+    min-height: 19.2vw;
+    border-radius: 2.4vw;
+    padding-left: 5.2vw;
+    margin-bottom: 3.3vw;
+}
+
+.coursetitle
+{
+    margin-top: 2vw;
+    font-size: 2.5vw;
+}
+
+.coursetitle:hover
+{
+    text-decoration: underline;
+}
+
+.coursedis 
+{
+    margin-top: 1.0vw;
+    font-size: 1.6vw;
+    padding-right: 5vw;
+}
+
+.courseinfo
+{
+    margin-top: 1.0vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2vw;
+}
+
+.courseauthors
+{
+    margin-bottom: 0.8vw;
+}
+
+.courseauthors:hover 
+{
+    text-decoration: underline;
+}
+
+.coursedate:hover
+{
+    text-decoration: underline;
+}
+
+.coursebottom 
+{
+    margin-top: 1vw;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2.5vw;
+    margin-bottom: 1vw;
+}
+
+.courserating img
+{
+    height: 2.7vw;
+    width: auto;
+}
+
+.coursehref 
+{
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    font-size: 1.6vw;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.coursehref:hover
+{
+    text-decoration: underline;
+}
+
+.coursehref img
+{
+    margin-left: 0.2vw;
+    height: 4vw; 
+    width: auto;
+}
+
+footer
+{
+    display: flex;
+    background-color: #2E5CAE;
+    height: 28.7vw;
+    width: 100%;
+    position: relative;
+}
+
+#contactus
+{
+    padding-top: 5.2vw;
+    padding-left: 12.5vw;
+    font-size: 1.8vw;
+    width: 20%;
+}
+
+#contactusmail 
+{
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    margin-top: 3.4vw;
+}
+
+#contactustelegram 
+{
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+#footerinfoother
+{
+    margin-left: 1.8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'IgraSans';
+    src: url('../fonts/IgraSans.otf');
+}

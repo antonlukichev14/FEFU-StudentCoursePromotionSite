@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Daddy</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+    <div id="menu">
+        <div id="menubuttons">
+            <a onclick="scrollToId('header')">о нас</a>
+            <a onclick="scrollToId('search')">курсы</a>
+            <a onclick="scrollToId('contactus')">контакты</a>
+        </div>
+        <div id="menubuttonsdel">
+            <img src="images/verline.svg">
+            <img src="images/verline.svg">
+        </div>
+    </div>
+    <div id="header">
+        <div id="headerimage"></div>
+        <img src="images/circle.svg" style="animation: 16s linear 0s infinite circleRotate; position: absolute; width: 6.7vw; right: 10vw; top: 63.3vw;">
+        <img src="images/circle.svg" style="animation: 28s linear 0s infinite circleRotate; position: absolute; width: 9.2vw; left: 38vw; top: 49vw;">
+        <div id="headercontent">
+            <div id="headertext">
+                Мы – команда единомышленников, которые верят, что образование должно быть доступным для всех 
+            </div>
+            <div id="bluebox">
+                <div id="blueboxtext">
+                    Мы стремимся продвигать учебные курсы и проекты, которые помогут каждому найти свою дорогу к знаниям!
+                </div>
+            </div>
+            <div id="headerthanks">
+                <img src="images/fefulogo.png" alt="">
+                <div style="margin-left: 25px;">Особая благодарность ДВФУ за поддержку наших идей</div>
+            </div>
+        </div>
+    </div>
+    <img src="images/boat.png" id="headerendboat">
+    <div id="headerend"></div>
+    <div id="search">
+        <div id="searchtitle">Давай учиться вместе!</div>
+        <div id="searchfieldflexbox">
+            <div class="searchfield" id="searchfieldta">
+                <textarea placeholder="Введите название курса..." name="" id=""></textarea>
+                <button onclick="openFilter()" id="searchfieldtafilterbutton"></button>
+            </div>
+            <div class="searchfieldhidden searchfilterfield" id="searchfiltersfield" style="transition: all 0.3s ease;">
+                <div class="searchfilterfieldscroll">
+                    <a onclick="openFilter2('searchfilterfield1')" style="margin-left: 0;">Категория</a>
+                    <a onclick="openFilter2('searchfilterfield2')">Год</a>
+                    <a onclick="openFilter2('searchfilterfield3')">Подходит для</a>
+                </div>
+            </div>
+            <div class="searchfieldhidden searchfilterfield" id="searchfilterfield1" style="transition: all 0.3s ease;">
+                <div class="searchfilterfieldscroll">
+                    <a onclick="setFilter(this)" style="margin-left: 0;">Математика</a>
+                    <a onclick="setFilter(this)">Информатика</a>
+                </div>
+            </div>
+            <div class="searchfieldhidden searchfilterfield" id="searchfilterfield2" style="transition: all 0.3s ease;">
+                <div class="searchfilterfieldscroll">
+                    <a onclick="setFilter(this)" style="margin-left: 0;">2024-2025</a>
+                    <a onclick="setFilter(this)">2025-2026</a>
+                    <a onclick="setFilter(this)">2026-2027</a>
+                    <a onclick="setFilter(this)">2027-2028</a>
+                </div>
+            </div>
+            <div class="searchfieldhidden searchfilterfield" id="searchfilterfield3" style="transition: all 0.3s ease;">
+                <div class="searchfilterfieldscroll">
+                    <a onclick="setFilter(this)" style="margin-left: 0;">Школьников</a>
+                    <a onclick="setFilter(this)">Студентов</a>
+                    <a onclick="setFilter(this)">Взрослых</a>
+                </div>
+            </div>
+        </div>
+        <div id="searchdecor">
+            <img src="images/circle1.svg" style="animation: 5s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 4.6vw; right: 8vw; top: 10vw;">
+            <img src="images/circle1.svg" style="animation: 7s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 3.5vw; left: 23vw; bottom: 2vw;">
+            <img src="images/circle1.svg" style="animation: 3s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 2.2vw; left: 10vw; top: 6vw;">
+            <img src="images/circle2.svg" style="animation: 9s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 1.7vw; left: 28vw; top: 12vw;">
+            <img src="images/circle2.svg" style="animation: 11s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 3.7vw; right: 17vw; bottom: 6vw;">
+            <img src="images/circle.svg" style="animation: 19s linear 0s infinite circleRotate; position: absolute; width: 3.1vw; left: 6vw; bottom: 5vw;">
+            <img src="images/circle.svg" style="animation: 14s linear 0s infinite circleRotate; position: absolute; width: 2.5vw; right: 3vw; bottom: 2vw;">
+            <img src="images/circle.svg" style="animation: 23s linear 0s infinite circleRotate; position: absolute; width: 3.6vw; right: 23.5vw; top: 2.5vw;">
+        </div>
+    </div>
+    <div id="courses">
+
+        <div class="course">
+            <div class="coursetitle">Дифференциальные уравнения первого порядка</div>
+            <div class="coursedis">
+                Запишитесь на наш курс и откройте для себя увлекательный мир дифференциальных уравнений! Доступ к полезным материалам и возможность учиться в удобном для вас темпе — всё это поможет вам достичь успеха в изучении математики. Не упустите шанс стать мастером в решении дифференциальных уравнений!
+            </div>
+            <div class="courseinfo">
+                <div class="courseauthors">Авторы курса: Михайлова Алина, Им Марина, Сакмаркин Владимир, Тесля Никита, Давидчук Владимир</div>
+                <div class="courseauthors">Наставник курса: Амосова Елена Владимировна</div>
+                <div class="courseauthors">Подходит для студентов</div>
+                <div class="coursefor"></div>
+                <div class="coursedate">Дата открытия: Декабрь 2024</div>
+            </div>
+            <div class="coursebottom">
+                <a href="https://stepik.org/course/225581" target="_blank" rel="noopener noreferrer" class="coursehref">STEPIK <img src="images/coursebutton.png"></a>
+            </div>
+        </div>
+
+        <div class="course" style="background-color: #2E5CAE;">
+            <div class="coursetitle">Тригонометрия</div>
+            <div class="coursedis">Тригонометрия – это основа, без которой невозможно представить современную науку, архитектуру и даже компьютерные технологии. Наш курс создан, чтобы сделать этот путь понятным, интересным и доступным каждому.</div>
+            <div class="courseinfo">
+                <div class="courseauthors">Авторы курса: Олейник В.В. Козырев Д.В. Трякшин А.А.</div>
+                <div class="courseauthors">Подходит для школьников, студентов, взрослых</div>
+                <div class="coursedate">Дата открытия: Декабрь 2024</div>
+            </div>
+            <div class="coursebottom">
+                <a href="https://stepik.org/226152" target="_blank" rel="noopener noreferrer" class="coursehref">STEPIK <img src="images/coursebutton.png"></a>
+            </div>
+        </div>
+        
+        <div style="width: 6vw; height: 1.3vw; display: flex; justify-content: space-between;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+        </div>
+    </div>
+    <footer>
+        <div id="contactus">
+            Свяжитесь с нами!
+
+            <div id="contactusmail">
+                <img src="images/mailicon.png" style="height: 2.3vw; margin-right: 1.3vw;">
+                ouremail@yandex.ru
+            </div>
+            <!--<div id="contactustelegram">
+                <img src="images/telegramicon.png" style="height: 45px; margin-right: 25px;">
+                @ourproject
+            </div>-->
+        </div>
+        <div id="footerinfoother">
+            <img src="images/fefulogofull.png" style="height: 5.8vw; margin-top: 7.2vw;">
+            <div style="margin-top: 1.8vw; font-size: 1.2vw; margin-left: 1.vw;">
+                https://www.dvfu.ru/
+            </div>
+            <div style="font-size: 1.2vw; margin-top: 7.5vw; margin-left: 2.6vw;">
+                © 2024 Наш проект. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <script>
+        var filterIsOpen = false;
+        const searchfieldtafilterbutton = document.getElementById('searchfieldtafilterbutton');
+        const searchfilterfield = document.getElementById('searchfiltersfield');
+        var currentopenfilter = 'none';
+
+        function setFilter(aElement)
+        {
+            if(aElement.classList.contains('setfilter'))
+            {
+                aElement.classList.remove('setfilter');
+            }
+            else
+            {
+                aElement.classList.add('setfilter');
+            }
+        }
+
+        function openFilter()
+        {
+            filterIsOpen = !filterIsOpen;
+
+            if(filterIsOpen)
+            {
+                searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filterop.png)';
+                searchfilterfield.classList.remove('searchfieldhidden');
+                searchfilterfield.classList.add('searchfield');
+            }
+            else
+            {
+                searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filter.png)';
+                searchfilterfield.classList.remove('searchfield');
+                searchfilterfield.classList.add('searchfieldhidden');
+
+                var scrollDiv = searchfilterfield.querySelector('.searchfilterfieldscroll');
+                if(hasHorizontalScrollbar(scrollDiv))
+                {
+                    scrollDiv.style.position = 'relative';
+                    scrollDiv.style.top = '0.2vw';
+                }
+
+                if(currentopenfilter != 'none')
+                {
+                    openFilter2(currentopenfilter.id);
+                }
+            }
+        }
+
+        function openFilter2(id)
+        {
+            var newCurrentopenfilter = document.getElementById(id);
+
+            if(currentopenfilter != 'none')
+            {
+                currentopenfilter.classList.remove('searchfield');
+                currentopenfilter.classList.add('searchfieldhidden');
+            }
+
+            if(currentopenfilter != newCurrentopenfilter)
+            {
+                currentopenfilter = newCurrentopenfilter;
+                currentopenfilter.classList.remove('searchfieldhidden');
+                currentopenfilter.classList.add('searchfield');
+
+                var scrollDiv = currentopenfilter.querySelector('.searchfilterfieldscroll');
+                if(hasHorizontalScrollbar(scrollDiv))
+                {
+                    scrollDiv.style.position = 'relative';
+                    scrollDiv.style.top = '0.2vw';
+                }
+            }
+            else
+            {
+                currentopenfilter = 'none';
+            }
+        }
+
+        function scrollToId(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let lastScrollTop = 0;
+        const myElement = document.getElementById('menu');
+
+        function hasHorizontalScrollbar(element) {
+            return element.scrollWidth > element.clientWidth;
+        }
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                myElement.classList.add('hidden');
+            } else {
+                myElement.classList.remove('hidden');
+            }
+        lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
