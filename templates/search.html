@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск курсов</title>
+</head>
+<body>
+    <h1>Поиск курсов</h1>
+    <form method="POST">
+        <input type="text" name="course_title" placeholder="Введите название курса">
+        <select name="category">
+            <option value="">Выберите категорию</option>
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="graduation_year" placeholder="Год выпуска" min="2000" max="2023">
+        <select name="audience">
+            <option value="">Подходит для</option>
+            {% for audience in audiences %}
+            <option value="{{ audience.id }}">{{ audience.type }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Поиск</button>
+    </form>
+    {% if courses %}
+    <h2>Результаты поиска:</h2>
+    <ul>
+        {% for course in courses %}
+            <li>
+                {{ course.title }} ({{ course.graduation_year }})
+                {% if isUserAdmin %}
+                    <form action="{{ url_for('delete_course', course_id=course.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этот курс?');">Удалить</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

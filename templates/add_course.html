@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить курс</title>
+</head>
+<body>
+    <h1>Добавить новый курс</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=32, rows=4) }}<br>
+        </p>
+        <p>
+            {{ form.graduation_year.label }}<br>
+            {{ form.graduation_year() }}<br>
+        </p>
+        <p>
+            {{ form.category_id.label }}<br>
+            {{ form.category_id() }}<br>
+        </p>
+        <p>
+            {{ form.audience_id.label }}<br>
+            {{ form.audience_id() }}<br>
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+    <a href>Назад к списку курсов</a>
+</body>
+</html>
