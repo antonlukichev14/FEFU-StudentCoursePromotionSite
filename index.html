@@ -94,27 +94,67 @@
                 Запишитесь на наш курс и откройте для себя увлекательный мир дифференциальных уравнений! Доступ к полезным материалам и возможность учиться в удобном для вас темпе — всё это поможет вам достичь успеха в изучении математики. Не упустите шанс стать мастером в решении дифференциальных уравнений!
             </div>
             <div class="courseinfo">
-                <div class="courseauthors">Авторы курса: Михайлова Алина, Им Марина, Сакмаркин Владимир, Тесля Никита, Давидчук Владимир</div>
-                <div class="courseauthors">Наставник курса: Амосова Елена Владимировна</div>
-                <div class="courseauthors">Подходит для студентов</div>
-                <div class="coursefor"></div>
-                <div class="coursedate">Дата открытия: Декабрь 2024</div>
+                <div class="courseinfoflex">
+                    <div class="courseinfoflexelement">Математика</div>
+                    <div class="courseinfoflexelement">Декабрь 2024</div>
+                    <div class="courseinfoflexelement courseinfoflexelementfor">
+                        <div class="courseinfofor0">Подходит для&nbsp;</div>
+                        <div class="courseinfoflexelementforpoints">студентов...</div>
+                        <div class="courseinfofor">
+                            <p>студентов</p>
+                            <p>школьников</p>
+                            <p>взрослых</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <img src="images/categories/math.svg" class="courseimg">
             <div class="coursebottom">
+                <div class="courseauthors">
+                    <p>Авторы:&nbsp;</p>
+                    <div class="courseauthorsnames">
+                        <p>Михайлова А.</p>
+                        <p>Им М.</p>
+                        <p>Тесля Н.</p>
+                        <p>Сакамаркин В.</p>
+                        <p>Давидчук В.</p>
+                    </div>
+                </div>
                 <a href="https://stepik.org/course/225581" target="_blank" rel="noopener noreferrer" class="coursehref">STEPIK <img src="images/coursebutton.png"></a>
             </div>
         </div>
 
         <div class="course" style="background-color: #2E5CAE;">
             <div class="coursetitle">Тригонометрия</div>
-            <div class="coursedis">Тригонометрия – это основа, без которой невозможно представить современную науку, архитектуру и даже компьютерные технологии. Наш курс создан, чтобы сделать этот путь понятным, интересным и доступным каждому.</div>
-            <div class="courseinfo">
-                <div class="courseauthors">Авторы курса: Олейник В.В. Козырев Д.В. Трякшин А.А.</div>
-                <div class="courseauthors">Подходит для школьников, студентов, взрослых</div>
-                <div class="coursedate">Дата открытия: Декабрь 2024</div>
+            <div class="coursedis">
+                Тригонометрия – это основа, без которой невозможно представить современную науку, архитектуру и даже компьютерные технологии. Наш курс создан, чтобы сделать этот путь понятным, интересным и доступным каждому.
             </div>
+            <div class="courseinfo">
+                <div class="courseinfoflex">
+                    <div class="courseinfoflexelement">Информатика</div>
+                    <div class="courseinfoflexelement">Декабрь 2024</div>
+                    <div class="courseinfoflexelement courseinfoflexelementfor">
+                        <div class="courseinfofor0">Подходит для&nbsp;</div>
+                        <div class="courseinfoflexelementforpoints">студентов...</div>
+                        <div class="courseinfofor">
+                            <p>студентов</p>
+                            <p>школьников</p>
+                            <p>взрослых</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="images/categories/informat.svg" class="courseimg">
             <div class="coursebottom">
-                <a href="https://stepik.org/226152" target="_blank" rel="noopener noreferrer" class="coursehref">STEPIK <img src="images/coursebutton.png"></a>
+                <div class="courseauthors">
+                    <p>Авторы:&nbsp;</p>
+                    <div class="courseauthorsnames">
+                        <p>Олейник В.В.</p>
+                        <p>Козырев Д.В.</p>
+                        <p>Трякшин А.А.</p>
+                    </div>
+                </div>
+                <a href="https://stepik.org/course/225581" target="_blank" rel="noopener noreferrer" class="coursehref">STEPIK <img src="images/coursebutton.png"></a>
             </div>
         </div>
         
@@ -153,104 +193,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        var filterIsOpen = false;
-        const searchfieldtafilterbutton = document.getElementById('searchfieldtafilterbutton');
-        const searchfilterfield = document.getElementById('searchfiltersfield');
-        var currentopenfilter = 'none';
-
-        function setFilter(aElement)
-        {
-            if(aElement.classList.contains('setfilter'))
-            {
-                aElement.classList.remove('setfilter');
-            }
-            else
-            {
-                aElement.classList.add('setfilter');
-            }
-        }
-
-        function openFilter()
-        {
-            filterIsOpen = !filterIsOpen;
-
-            if(filterIsOpen)
-            {
-                searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filterop.png)';
-                searchfilterfield.classList.remove('searchfieldhidden');
-                searchfilterfield.classList.add('searchfield');
-            }
-            else
-            {
-                searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filter.png)';
-                searchfilterfield.classList.remove('searchfield');
-                searchfilterfield.classList.add('searchfieldhidden');
-
-                var scrollDiv = searchfilterfield.querySelector('.searchfilterfieldscroll');
-                if(hasHorizontalScrollbar(scrollDiv))
-                {
-                    scrollDiv.style.position = 'relative';
-                    scrollDiv.style.top = '0.2vw';
-                }
-
-                if(currentopenfilter != 'none')
-                {
-                    openFilter2(currentopenfilter.id);
-                }
-            }
-        }
-
-        function openFilter2(id)
-        {
-            var newCurrentopenfilter = document.getElementById(id);
-
-            if(currentopenfilter != 'none')
-            {
-                currentopenfilter.classList.remove('searchfield');
-                currentopenfilter.classList.add('searchfieldhidden');
-            }
-
-            if(currentopenfilter != newCurrentopenfilter)
-            {
-                currentopenfilter = newCurrentopenfilter;
-                currentopenfilter.classList.remove('searchfieldhidden');
-                currentopenfilter.classList.add('searchfield');
-
-                var scrollDiv = currentopenfilter.querySelector('.searchfilterfieldscroll');
-                if(hasHorizontalScrollbar(scrollDiv))
-                {
-                    scrollDiv.style.position = 'relative';
-                    scrollDiv.style.top = '0.2vw';
-                }
-            }
-            else
-            {
-                currentopenfilter = 'none';
-            }
-        }
-
-        function scrollToId(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        let lastScrollTop = 0;
-        const myElement = document.getElementById('menu');
-
-        function hasHorizontalScrollbar(element) {
-            return element.scrollWidth > element.clientWidth;
-        }
-
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (scrollTop > lastScrollTop) {
-                myElement.classList.add('hidden');
-            } else {
-                myElement.classList.remove('hidden');
-            }
-        lastScrollTop = scrollTop;
-        });
-    </script>
+    <script src="js/index.js"></script>
 </body>
 </html>
