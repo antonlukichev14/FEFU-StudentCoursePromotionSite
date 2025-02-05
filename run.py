@@ -46,7 +46,7 @@ def search():
         courses_query = Course.query
 
         if form.title.data:
-            courses_query = courses_query.filter(Course.title.contains(form.title.data))
+            courses_query = courses_query.filter(Course.title.contains(form.title.data.lower()))
 
         if form.categories.data:
             courses_query = (courses_query
@@ -140,6 +140,7 @@ def redact_course(course_id):
     course = Course.query.get_or_404(course_id)
 
     form = CourseForm(obj=course)
+
     form.submit.label.text = 'Сохранить изменения'
 
     form.year.choices = get_year_choices()
@@ -193,7 +194,7 @@ def is_user_admin():
     return current_user.is_authenticated and current_user.role == 'admin'
 
 def get_year_choices():
-    years = [(year, f"{year}-{year+1}") for year in range(2020, 2027)]
+    years = [(year, f"{year}-{year+1}") for year in range(2023, 2026)]
     return years
 
 if __name__ == '__main__':

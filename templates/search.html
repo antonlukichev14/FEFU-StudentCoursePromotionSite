@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FEFU Courses</title>
+    <title>FEFU Courses Guide</title>
     <link rel="stylesheet" href="/static/css/master.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
         <div id="searchtitle">Давай учиться вместе!</div>
         <form id="tabs" method="post">
             <div class="tab" id="searcha">
-                {{ form.title()}}
+                {{ form.title(placeholder="Введите название курса")}}
                 <input type="checkbox" onclick="toogle('filter')" id="searchfieldtafilterbutton"></button>
             </div>
             <ul class="tab hidden" id="filter">
@@ -61,7 +61,7 @@
             {{ form.audiences(class="tab hidden") }}
             <div>
                 {{ form.submit() }}
-                
+
             </div>
         </form>
         <div id="searchdecor">

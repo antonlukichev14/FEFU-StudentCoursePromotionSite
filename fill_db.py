@@ -1,63 +1,61 @@
 from run import create_app
 from app.models import db, Category, Audience, Course, Link
+import pandas as pd
 
 def fill_database():
     app = create_app()
 
-    with app.app_context():  # Входим в контекст приложения
-        # Удаляем все существующие данные и создаем новую базу
+    with app.app_context(): 
         Course.query.delete()
         Category.query.delete()
         Audience.query.delete()
         Link.query.delete()
 
-        # Добавляем категории
-        category1 = Category(name='Математика')
-        category2 = Category(name='Информатика')
-
-        db.session.add(category1)
-        db.session.add(category2)
-        db.session.commit()  # Обязательно
-
-        # Добавляем аудиторию
-        audience1 = Audience(type='Школьников')
-        audience2 = Audience(type='Студентов')
-        audience3 = Audience(type='Взрослых')
-
-        db.session.add(audience1)
-        db.session.add(audience2)
-        db.session.add(audience3)
-        db.session.commit()  # Обязательно
-
-        link1 = Link(type='STEPIK')
-
-        db.session.add(link1)
-        db.session.commit() 
-
-        # Добавляем курсы
-        course1 = Course(title='Дифференциальные уравнения первого порядка', 
-                         description='Запишитесь на наш курс и откройте для себя увлекательный мир дифференциальных уравнений! Доступ к полезным материалам и возможность учиться в удобном для вас темпе — всё это поможет вам достичь успеха в изучении математики. Не упустите шанс стать мастером в решении дифференциальных уравнений!',
-                         year=2023, 
-                         url='https://stepik.org/course/225581',
-                         authors='Михайлова А.;Им М;Тесля Н.;Сакамаркин В.;Давидчук В.',
-                         link_id=link1.id,
-                         category_id=category1.id,
-                         audience_id=audience2.id)
+        df = pd.read_excel("Курсы.xlsx")
         
-        course2 = Course(title='Тригонометрия', 
-                         description='Тригонометрия – это основа, без которой невозможно представить современную науку, архитектуру и даже компьютерные технологии. Наш курс создан, чтобы сделать этот путь понятным, интересным и доступным каждому.',
-                         year=2024, 
-                         url='https://stepik.org/course/225581',
-                         authors='Олейник В.В.;Козырев Д.В.;Трякшин А.А.',
-                         link_id=link1.id,
-                         category_id=category2.id,
-                         audience_id=audience1.id)
+        for index, row in df.iterrows():
+            title = row["Название"]
+            description = row["Описание"]
+            category_name = row["Категория"]
+            year = row["Дата"].year
+            audience_type = row["Подходит для"]
+            authors = row["Авторы"].replace(", ", ";")
+            link_type = row["Платформа"]
+            url = row["Ссылка"]
 
-        db.session.add(course1)
-        db.session.add(course2)
-        db.session.commit()  # Обязательно
+            category = Category.query.filter_by(name=category_name).first()
+            if not category:
+                category = Category(name=category_name)
+                db.session.add(category)
+                db.session.commit()
+            category_id = category.id
 
-        print('База данных успешно заполнена!')
+            audience = Audience.query.filter_by(type=audience_type).first()
+            if not audience:
+                audience = Audience(type=audience_type)
+                db.session.add(audience)
+                db.session.commit()
+            audience_id = audience.id
+
+            link = Link.query.filter_by(type=link_type).first()
+            if not link:
+                link = Link(type=link_type)
+                db.session.add(link)
+                db.session.commit()
+            link_id = link.id
+
+            course = Course(
+                title=title,
+                description=description,
+                year=year,
+                category_id=category_id,
+                audience_id=audience_id,
+                link_id=link_id,
+                url=url,
+                authors=authors
+            )
+            db.session.add(course)
+            db.session.commit()
 
 if __name__ == '__main__':
     fill_database()

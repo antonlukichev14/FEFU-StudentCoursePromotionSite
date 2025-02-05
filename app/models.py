@@ -71,5 +71,5 @@ class Course(db.Model):
     def get_authors(self):
         return self.authors.split(';')
 
-    def contains_in_title(self, a):
-        return self.title.lower().contains(a)
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
