@@ -158,7 +158,7 @@ function OnAuthorsHoverLeave2(targetElement) {
 var filterIsOpen = false;
 const searchfieldtafilterbutton = document.getElementById('searchfieldtafilterbutton');
 const searchfilterfield = document.getElementById('searchfiltersfield');
-var currentopenfilter = 'none';
+var currentopenfilter;
 
 function setFilter(aElement) {
     if (aElement.classList.contains('setfilter')) {
@@ -172,13 +172,16 @@ function setFilter(aElement) {
 function openFilter() {
     filterIsOpen = !filterIsOpen;
 
+    const searchfieldtafilterbutton = document.getElementById('searchfieldtafilterbutton');
+    const searchfilterfield = document.getElementById('filter');
+
     if (filterIsOpen) {
-        searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filterop.png)';
+        searchfieldtafilterbutton.style.backgroundImage = 'url(../static/images/filterop.png)';
         searchfilterfield.classList.remove('searchfieldhidden');
         searchfilterfield.classList.add('searchfield');
     }
     else {
-        searchfieldtafilterbutton.style.backgroundImage = 'url(../images/filter.png)';
+        searchfieldtafilterbutton.style.backgroundImage = 'url(../static/images/filter.png)';
         searchfilterfield.classList.remove('searchfield');
         searchfilterfield.classList.add('searchfieldhidden');
 
@@ -188,7 +191,7 @@ function openFilter() {
             scrollDiv.style.top = '0.2vw';
         }
 
-        if (currentopenfilter != 'none') {
+        if (currentopenfilter) {
             openFilter2(currentopenfilter.id);
         }
     }
@@ -197,7 +200,7 @@ function openFilter() {
 function openFilter2(id) {
     var newCurrentopenfilter = document.getElementById(id);
 
-    if (currentopenfilter != 'none') {
+    if (currentopenfilter) {
         currentopenfilter.classList.remove('searchfield');
         currentopenfilter.classList.add('searchfieldhidden');
     }
@@ -214,7 +217,7 @@ function openFilter2(id) {
         }
     }
     else {
-        currentopenfilter = 'none';
+        currentopenfilter = null;
     }
 }
 
@@ -241,3 +244,9 @@ window.addEventListener('scroll', function () {
     }
     lastScrollTop = scrollTop;
 });
+
+function toogle(id) {
+    const element = document.getElementById(id);
+    const result = element.classList.toggle("hidden");
+}
+

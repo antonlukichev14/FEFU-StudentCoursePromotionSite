@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Добавить курс</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-    <h1>Добавить новый курс</h1>
+    <h1>{{ h1 }}</h1>
     <form method="post">
         {{ form.hidden_tag() }}
         <p>
@@ -19,8 +19,8 @@
             {{ form.description(cols=32, rows=4) }}<br>
         </p>
         <p>
-            {{ form.graduation_year.label }}<br>
-            {{ form.graduation_year() }}<br>
+            {{ form.year.label }}<br>
+            {{ form.year() }}<br>
         </p>
         <p>
             {{ form.category_id.label }}<br>
@@ -31,9 +31,21 @@
             {{ form.audience_id() }}<br>
         </p>
         <p>
+            {{ form.link_id.label }}<br>
+            {{ form.link_id() }}<br>
+        </p>
+        <p>
+            {{ form.url.label }}<br>
+            {{ form.url() }}<br>
+        </p>
+        <p>
+            {{ form.authors.label }}<br>
+            {{ form.authors() }}<br>
+        </p>
+        <p>
             {{ form.submit() }}
         </p>
     </form>
-    <a href>Назад к списку курсов</a>
+    <a href="{{ url_for('search') }}">Назад к списку курсов</a>
 </body>
 </html>

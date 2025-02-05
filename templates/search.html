@@ -2,41 +2,157 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Поиск курсов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEFU Courses</title>
+    <link rel="stylesheet" href="/static/css/master.css">
 </head>
 <body>
-    <h1>Поиск курсов</h1>
-    <form method="POST">
-        <input type="text" name="course_title" placeholder="Введите название курса">
-        <select name="category">
-            <option value="">Выберите категорию</option>
-            {% for category in categories %}
-            <option value="{{ category.id }}">{{ category.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="number" name="graduation_year" placeholder="Год выпуска" min="2000" max="2023">
-        <select name="audience">
-            <option value="">Подходит для</option>
-            {% for audience in audiences %}
-            <option value="{{ audience.id }}">{{ audience.type }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Поиск</button>
-    </form>
-    {% if courses %}
-    <h2>Результаты поиска:</h2>
-    <ul>
+    <div id="menu">
+        <a href="#header">о нас</a>
+        <img src="/static/images/verline.svg">
+        <a href="#search">курсы</a>
+        <img src="/static/images/verline.svg">
+        <a href="#contactus">контакты</a>
+    </div>
+    <div id="header">
+        <div id="headerimage"></div>
+        <img src="/static/images/circle.svg" style="animation: 16s linear 0s infinite circleRotate; position: absolute; width: 6.7vw; right: 10vw; top: 63.3vw;">
+        <img src="/static/images/circle.svg" style="animation: 28s linear 0s infinite circleRotate; position: absolute; width: 9.2vw; left: 38vw; top: 49vw;">
+        <div id="headercontent">
+            <div id="headertext">
+                Мы – команда единомышленников, которые верят, что образование должно быть доступным для всех 
+            </div>
+            <div id="bluebox">
+                <div id="blueboxtext">
+                    Мы стремимся продвигать учебные курсы и проекты, которые помогут каждому найти свою дорогу к знаниям!
+                </div>
+            </div>
+            <div id="headerthanks">
+                <img src="/static/images/fefulogo.png" alt="">
+                <div style="margin-left: 25px;">Особая благодарность ДВФУ за поддержку наших идей</div>
+            </div>
+        </div>
+    </div>
+    <img src="/static/images/boat.png" id="headerendboat">
+    <div id="headerend"></div>
+    <div id="search">
+        <div id="searchtitle">Давай учиться вместе!</div>
+        <form id="tabs" method="post">
+            <div class="tab" id="searcha">
+                {{ form.title()}}
+                <input type="checkbox" onclick="toogle('filter')" id="searchfieldtafilterbutton"></button>
+            </div>
+            <ul class="tab hidden" id="filter">
+                <li>
+                    <input type="radio" id="category" name="filter" onclick="toogle('categories')">
+                    <label for="category">Категория</label>
+                </li>
+                <li>
+                    <input type="radio" id="year" name="filter" onclick="toogle('years');">
+                    <label for="year">Год</label>
+                </li>
+                <li>
+                    <input type="radio" id="audience" name="filter" onclick="toogle('audiences');">
+                    <label for="audience">Подходит для</label>
+                </li>
+            </ul>
+            {{ form.categories(class="tab hidden") }}
+            {{ form.years(class="tab hidden") }}
+            {{ form.audiences(class="tab hidden") }}
+            <div>
+                {{ form.submit() }}
+                
+            </div>
+        </form>
+        <div id="searchdecor">
+            <img src="/static/images/circle1.svg" style="animation: 5s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 4.6vw; right: 8vw; top: 10vw;">
+            <img src="/static/images/circle1.svg" style="animation: 7s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 3.5vw; left: 23vw; bottom: 2vw;">
+            <img src="/static/images/circle1.svg" style="animation: 3s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 2.2vw; left: 10vw; top: 6vw;">
+            <img src="/static/images/circle2.svg" style="animation: 9s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 1.7vw; left: 28vw; top: 12vw;">
+            <img src="/static/images/circle2.svg" style="animation: 11s ease-in-out 0.02s infinite waveCircles; position: absolute; width: 3.7vw; right: 17vw; bottom: 6vw;">
+            <img src="/static/images/circle.svg" style="animation: 19s linear 0s infinite circleRotate; position: absolute; width: 3.1vw; left: 6vw; bottom: 5vw;">
+            <img src="/static/images/circle.svg" style="animation: 14s linear 0s infinite circleRotate; position: absolute; width: 2.5vw; right: 3vw; bottom: 2vw;">
+            <img src="/static/images/circle.svg" style="animation: 23s linear 0s infinite circleRotate; position: absolute; width: 3.6vw; right: 23.5vw; top: 2.5vw;">
+        </div>
+    </div>
+    <ul id="courses">
+        {% if courses %}
         {% for course in courses %}
-            <li>
-                {{ course.title }} ({{ course.graduation_year }})
-                {% if isUserAdmin %}
-                    <form action="{{ url_for('delete_course', course_id=course.id) }}" method="post" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этот курс?');">Удалить</button>
-                    </form>
-                {% endif %}
-            </li>
+        <li class="course">
+            <div class="coursetitle">{{ course.title }}</div>
+            <div class="coursedis">{{ course.description }}</div>
+            <div class="coursebottom">
+                <div style="display: flex; flex-direction: column; gap: 0.5vw;">
+                    <ul class="courseinfo">
+                        <li class="courseinfoflexelement">{{ course.category }}</li>
+                        <li class="courseinfoflexelement">{{ course.year }}</li>
+                        <li class="courseinfoflexelement courseinfoflexelementfor">Подходит для {{ course.audience }}</li>
+                    </ul>
+                    <ul class="courseauthorsnames">
+                        <li>Авторы:</li>
+                        {% for author in course.get_authors() %}
+                        <li>{{ author }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <a href="{{ course.url }}" target="_blank" rel="noopener noreferrer" class="coursehref">{{ course.link }} <img src="/static/images/coursebutton.png"></a>
+                <!-- <img src="/static/images/categories/math.svg" class="courseimg"> -->
+            </div>
+            {% if is_user_admin %}
+            <div class="utility">
+                <a href="{{ url_for('redact_course', course_id=course.id) }}" class="redactbutton">Редактировать</a>
+                <form 
+                action="{{ url_for('delete_course', course_id=course.id) }}" 
+                method="post" 
+                class="deleteform"
+                >
+                    <button 
+                        type="submit" 
+                        onclick="return confirm('Вы уверены, что хотите удалить этот курс?');" 
+                        class="deletebutton"
+                    >Удалить</button>
+                </form>
+            </div>
+            {% endif %}
+        </li>
         {% endfor %}
-    </ul>
-    {% endif %}
+        {% if is_user_admin %}
+        <li class="addcourse" id="addcourse"><a href="{{ url_for('add_course') }}">Добавить курс</a></li>
+        {% endif %}
+        {% else %}
+        <div style="color: black;">По вашему запросу ничего не найдено</div>
+        {% endif %}
+        <div style="width: 6vw; height: 1.3vw; display: flex; justify-content: space-between;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#668DC2"/>
+            </svg>
+        </div>
+    </div>
+    <footer>
+        <div id="contactus">
+            Свяжитесь с нами!
+
+            <div id="contactusmail">
+                <img src="/static/images/mailicon.png" style="height: 2.3vw; margin-right: 1.3vw;">
+                ouremail@yandex.ru
+            </div>
+        </div>
+        <div id="footerinfoother">
+            <img src="/static/images/fefulogofull.png" style="height: 5.8vw; margin-top: 7.2vw;">
+            <div style="margin-top: 1.8vw; font-size: 1.2vw; margin-left: 1.vw;">
+                https://www.dvfu.ru/
+            </div>
+            <div style="font-size: 1.2vw; margin-top: 7.5vw; margin-left: 2.6vw;">
+                © 2024 Наш проект. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/index.js')}}"></script>
 </body>
 </html>
